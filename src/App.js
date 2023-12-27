@@ -1,17 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import './App.css';
-import Timer from './components/Timer';
 import Tabs from './components/Tabs'
+
+
 function App() {
 
-
   return (
-    <div style={{    
-    }}
+    <div 
       className="App">
         <Tabs/>
-
-  {/* <Timer/> */}
     </div>
   );
 }
