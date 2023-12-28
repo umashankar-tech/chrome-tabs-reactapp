@@ -1,10 +1,10 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-import AddIcon from '@mui/icons-material/Add';
-import CloseIcon from '@mui/icons-material/Close';
+import * as React from "react";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import AddIcon from "@mui/icons-material/Add";
+import CloseIcon from "@mui/icons-material/Close";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -29,17 +29,17 @@ function CustomTabPanel(props) {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
   };
 }
 
 export default function BasicTabs() {
   const [value, setValue] = React.useState(0);
-  const [stateArray, setStateArray] = React.useState(["New tab"]);
+  const [stateArray, setStateArray] = React.useState(["New tab 1"]);
 
   const increaseArrayLength = () => {
     const newIndex = stateArray.length;
-    setStateArray([...stateArray, `New tab ${newIndex}`]);
+    setStateArray([...stateArray, `New tab ${newIndex + 1}`]);
     setValue(newIndex); // Set the value to the newly added tab index
   };
 
@@ -59,28 +59,59 @@ export default function BasicTabs() {
   };
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider', alignItems: "center" }}>
+    <Box sx={{ width: "100%" }}>
+      <Box
+        paddingTop={0.5}
+        sx={{
+          borderColor: "divider",
+          alignItems: "center",
+          backgroundColor: "#B6BBC4",
+        }}
+      >
         <Tabs
-        sx={{maxHeight:"10px"}}
-        value={value} style={{ height: "30px" }} onChange={handleChange} aria-label="basic tabs example">
+          sx={{ height: "20px" }}
+          value={value}
+          style={{ height: "30px" }}
+          onChange={handleChange}
+          aria-label="basic tabs example"
+          indicatorColor="white"
+        >
           {stateArray.map((data, index) => (
             <Tab
               key={index}
               label={
-                <div style={{ display: 'flex', alignItems: 'center', fontSize: "11px" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    fontSize: "11px",
+                    height: "20px",
+                    color:"black"
+                  }}
+                >
                   <span>{data}</span>
-                  <CloseIcon onClick={(event) => handleCloseTab(event, index)} style={{ marginLeft: '40px', cursor: 'pointer', fontSize: "15px" }} />
+                  <CloseIcon
+                    onClick={(event) => handleCloseTab(event, index)}
+                    style={{
+                      marginLeft: "40px",
+                      cursor: "pointer",
+                      fontSize: "15px",
+                    }}
+                  />
+                  
                 </div>
               }
               {...a11yProps(index)}
               sx={{
-                backgroundColor: value === index ? '#ccc' : 'inherit',
+                backgroundColor: value === index ? "white" : "#B6BBC4",
+                borderTopRightRadius: "12px",
+                borderTopLeftRadius: "12px",
+                height: "20px",
               }}
             />
           ))}
           <Box mt={1.5} onClick={increaseArrayLength} cursor="pointer">
-            <AddIcon fontSize='small' onClick={increaseArrayLength} />
+            <AddIcon fontSize="small" onClick={increaseArrayLength} />
           </Box>
         </Tabs>
       </Box>

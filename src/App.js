@@ -1,14 +1,11 @@
-import React from 'react';
-import './App.css';
-import Tabs from './components/Tabs'
-
+import React from "react";
+import "./App.css";
+import Tabs from "./components/Tabs";
 
 function App() {
-
   return (
-    <div 
-      className="App">
-        <Tabs/>
+    <div className="App">
+      <Tabs />
     </div>
   );
 }
