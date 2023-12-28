@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
+import { Divider } from "@mui/material";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -63,15 +64,12 @@ export default function BasicTabs() {
       <Box
         paddingTop={0.5}
         sx={{
-          borderColor: "divider",
           alignItems: "center",
           backgroundColor: "#B6BBC4",
         }}
       >
         <Tabs
-          sx={{ height: "20px" }}
           value={value}
-          style={{ height: "30px" }}
           onChange={handleChange}
           aria-label="basic tabs example"
           indicatorColor="white"
@@ -85,20 +83,32 @@ export default function BasicTabs() {
                     display: "flex",
                     alignItems: "center",
                     fontSize: "11px",
-                    height: "20px",
-                    color:"black"
+                    height: "40px",
+                    color: "black",
                   }}
                 >
                   <span>{data}</span>
+
                   <CloseIcon
                     onClick={(event) => handleCloseTab(event, index)}
                     style={{
-                      marginLeft: "40px",
+                      marginLeft: "30px",
                       cursor: "pointer",
                       fontSize: "15px",
                     }}
                   />
-                  
+                  {stateArray.length > 3 && value !== index && (
+                    <Box ml={1}>
+                      <Divider
+                        orientation="vertical"
+                        style={{
+                          height: "15px",
+                          width: "1.5px ",
+                          backgroundColor: "#F0F0F0",
+                        }}
+                      />
+                    </Box>
+                  )}
                 </div>
               }
               {...a11yProps(index)}
@@ -106,11 +116,12 @@ export default function BasicTabs() {
                 backgroundColor: value === index ? "white" : "#B6BBC4",
                 borderTopRightRadius: "12px",
                 borderTopLeftRadius: "12px",
-                height: "20px",
+                height: "30px",
               }}
             />
           ))}
-          <Box mt={1.5} onClick={increaseArrayLength} cursor="pointer">
+
+          <Box mt={1.7} ml={1} onClick={increaseArrayLength} cursor="pointer">
             <AddIcon fontSize="small" onClick={increaseArrayLength} />
           </Box>
         </Tabs>
